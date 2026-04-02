@@ -295,9 +295,9 @@ const mockReports = [
   {
     id: '1',
     type: 'traffic_jam',
-    title: 'إكتظاظ مروري على طريق مدنين',
+    title: 'إكتظاظ مروري بوسط العاصمة',
     description: 'ازدحام شديد بسبب حادث مروري',
-    location: 'طريق مدنين - قابس',
+    location: 'وسط العاصمة - المرسى',
     status: 'active',
     votes: 15,
     views: 120,
