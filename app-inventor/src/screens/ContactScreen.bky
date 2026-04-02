@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="event" id="btnCallPolice_Click" x="10" y="10">
+    <field name="NAME">btnCallPolice</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="phonecall" id="call_police">
+        <field name="PHONE_NUMBER">197</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnCallAmbulance_Click" x="10" y="100">
+    <field name="NAME">btnCallAmbulance</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="phonecall" id="call_ambulance">
+        <field name="PHONE_NUMBER">190</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnCallCivil_Click" x="10" y="200">
+    <field name="NAME">btnCallCivil</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="phonecall" id="call_civil">
+        <field name="PHONE_NUMBER">198</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnBack_Click" x="10" y="300">
+    <field name="NAME">btnBack</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="screen_switch" id="switch_back">
+        <field name="SCREEN">Screen1</field>
+      </block>
+    </statement>
+  </block>
+</xml>

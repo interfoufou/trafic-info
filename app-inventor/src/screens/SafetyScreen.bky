@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="event" id="btnBack_Click" x="10" y="10">
+    <field name="NAME">btnBack</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="screen_switch" id="switch_back">
+        <field name="SCREEN">Screen1</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnCongestion_Click" x="10" y="100">
+    <field name="NAME">btnCongestion</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="notifier" id="show_congestion">
+        <field name="MESSAGE">معلومات الإكتظاظ المروري</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnReports_Click" x="10" y="200">
+    <field name="NAME">btnReports</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="notifier" id="show_reports">
+        <field name="MESSAGE">البلاغات المرورية</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnRoadworks_Click" x="10" y="300">
+    <field name="NAME">btnRoadworks</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="notifier" id="show_roadworks">
+        <field name="MESSAGE">الأشغال بالطريق</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnEvents_Click" x="10" y="400">
+    <field name="NAME">btnEvents</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="notifier" id="show_events">
+        <field name="MESSAGE">التظاهرات</field>
+      </block>
+    </statement>
+  </block>
+</xml>

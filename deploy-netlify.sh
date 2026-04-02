@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "🚀 نشر TRAFIC INFO TUNISIE على Netlify"
+echo "========================================"
+echo ""
+echo "الخيار 1: نشر من GitHub"
+echo "------------------------"
+echo "1. اذهب إلى: https://app.netlify.com"
+echo "2. اضغط 'Add new site' → 'Import an existing project'"
+echo "3. اختر 'Deploy with GitHub'"
+echo "4. اربط المستودع"
+echo ""
+echo "الخيار 2: السحب والإفلات"
+echo "------------------------"
+echo "1. اذهب إلى: https://app.netlify.com/drop"
+echo "2. اسحب مجلد المشروع كاملاً"
+echo ""

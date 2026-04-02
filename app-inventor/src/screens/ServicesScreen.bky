@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="event" id="btnBack_Click" x="10" y="10">
+    <field name="NAME">btnBack</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="screen_switch" id="switch_back">
+        <field name="SCREEN">Screen1</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnLicense_Click" x="10" y="100">
+    <field name="NAME">btnLicense</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="notifier" id="show_license">
+        <field name="MESSAGE">معلومات رخصة السياقة</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnRoadworkPermit_Click" x="10" y="200">
+    <field name="NAME">btnRoadworkPermit</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="notifier" id="show_roadwork">
+        <field name="MESSAGE">تراخيص الأشغال بالطريق</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnRadar_Click" x="10" y="300">
+    <field name="NAME">btnRadar</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="notifier" id="show_radar">
+        <field name="MESSAGE">الرادار الآلي</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnViolations_Click" x="10" y="400">
+    <field name="NAME">btnViolations</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="notifier" id="show_violations">
+        <field name="MESSAGE">المخالفات المرورية</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnAccidents_Click" x="10" y="500">
+    <field name="NAME">btnAccidents</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="notifier" id="show_accidents">
+        <field name="MESSAGE">الحوادث المرورية</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnEServices_Click" x="10" y="600">
+    <field name="NAME">btnEServices</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="notifier" id="show_eservices">
+        <field name="MESSAGE">الخدمات الإلكترونية</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnFAQ_Click" x="10" y="700">
+    <field name="NAME">btnFAQ</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="notifier" id="show_faq">
+        <field name="MESSAGE">الأسئلة المتداولة</field>
+      </block>
+    </statement>
+  </block>
+</xml>

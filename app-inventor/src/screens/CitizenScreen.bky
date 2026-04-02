@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="event" id="btnCheckFines_Click" x="10" y="10">
+    <field name="NAME">btnCheckFines</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="activity_starter" id="open_fines">
+        <field name="ACTION">android.intent.action.VIEW</field>
+        <field name="DATAURI">https://amendes.finances.gov.tn/jsp/Amende/cons_amende.jsp</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnBack_Click" x="10" y="100">
+    <field name="NAME">btnBack</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="screen_switch" id="switch_back">
+        <field name="SCREEN">Screen1</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnPhotos_Click" x="10" y="200">
+    <field name="NAME">btnPhotos</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="notifier" id="show_photos">
+        <field name="MESSAGE">سيتم رفع الصور</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnVideos_Click" x="10" y="300">
+    <field name="NAME">btnVideos</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="notifier" id="show_videos">
+        <field name="MESSAGE">سيتم رفع الفيديو</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnMessage_Click" x="10" y="400">
+    <field name="NAME">btnMessage</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="notifier" id="show_message">
+        <field name="MESSAGE">سيتم إرسال الرسالة</field>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="event" id="btnSafety_Click" x="10" y="10">
+    <field name="NAME">btnSafety</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="screen_switch" id="switch_safety">
+        <field name="SCREEN">SafetyScreen</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnCitizen_Click" x="10" y="100">
+    <field name="NAME">btnCitizen</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="screen_switch" id="switch_citizen">
+        <field name="SCREEN">CitizenScreen</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnContact_Click" x="10" y="200">
+    <field name="NAME">btnContact</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="screen_switch" id="switch_contact">
+        <field name="SCREEN">ContactScreen</field>
+      </block>
+    </statement>
+  </block>
+  <block type="event" id="btnServices_Click" x="10" y="300">
+    <field name="NAME">btnServices</field>
+    <field name="EVENT">Click</field>
+    <statement name="DO">
+      <block type="screen_switch" id="switch_services">
+        <field name="SCREEN">ServicesScreen</field>
+      </block>
+    </statement>
+  </block>
+</xml>
