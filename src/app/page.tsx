@@ -75,7 +75,7 @@ const translations = {
         videos: 'فيديو',
         message: 'رسالة',
         financialFines: 'الخطايا المالية',
-        financialFinesDesc: 'التحقق من الخطايا المالية المستحقة على مركبتك',
+        financialFinesDesc: 'تفقد الخطايا متاعك',
         form: {
           type: 'نوع التنبيه',
           title: 'عنوان التنبيه',
@@ -452,6 +452,7 @@ export default function Home() {
             <nav className="hidden md:flex items-center gap-1">
               {tabs.map((tab) => (
                 <button
+                  type="button"
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
@@ -513,6 +514,7 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-2">
                 {tabs.map((tab) => (
                   <button
+                    type="button"
                     key={tab.id}
                     onClick={() => {
                       setActiveTab(tab.id);
@@ -920,10 +922,11 @@ export default function Home() {
       </footer>
 
       {/* Mobile Bottom Navigation */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-50">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-40">
         <div className="grid grid-cols-4 gap-1 p-2">
           {tabs.map((tab) => (
             <button
+              type="button"
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex flex-col items-center gap-1 px-2 py-2 rounded-lg text-xs ${
