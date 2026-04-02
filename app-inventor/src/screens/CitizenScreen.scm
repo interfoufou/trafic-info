@@ -37,7 +37,7 @@
         {
           "Type": "Label",
           "Name": "lblFinesDesc",
-          "Text": "التحقق من الخطايا المالية المستحقة على مركبتك",
+          "Text": "تفقد الخطايا متاعك",
           "FontSize": "14",
           "TextColor": "#FF78716C",
           "Width": "Fill parent",
