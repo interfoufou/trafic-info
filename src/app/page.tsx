@@ -74,6 +74,8 @@ const translations = {
         photos: 'صور',
         videos: 'فيديو',
         message: 'رسالة',
+        financialFines: 'الخطايا المالية',
+        financialFinesDesc: 'تفقد الخطايا متاعك',
         form: {
           type: 'نوع التنبيه',
           title: 'عنوان التنبيه',
@@ -150,6 +152,8 @@ const translations = {
         photos: 'Photos',
         videos: 'Vidéos',
         message: 'Message',
+        financialFines: 'Amendes financières',
+        financialFinesDesc: 'Vérifier les amendes financières dues sur votre véhicule',
         form: {
           type: 'Type d\'alerte',
           title: 'Titre',
@@ -226,6 +230,8 @@ const translations = {
         photos: 'Photos',
         videos: 'Videos',
         message: 'Message',
+        financialFines: 'Financial Fines',
+        financialFinesDesc: 'Check outstanding fines on your vehicle',
         form: {
           type: 'Alert Type',
           title: 'Alert Title',
@@ -289,9 +295,9 @@ const mockReports = [
   {
     id: '1',
     type: 'traffic_jam',
-    title: 'إكتظاظ مروري على طريق مدنين',
+    title: 'إكتظاظ مروري بوسط العاصمة',
     description: 'ازدحام شديد بسبب حادث مروري',
-    location: 'طريق مدنين - قابس',
+    location: 'وسط العاصمة - المرسى',
     status: 'active',
     votes: 15,
     views: 120,
@@ -424,18 +430,21 @@ export default function Home() {
   };
 
   return (
-    <div className={`min-h-screen flex flex-col bg-gradient-to-b from-blue-50 to-white ${isRTL ? '' : 'ltr'}`}>
+    <div 
+      className={`min-h-screen flex flex-col bg-slate-50 ${isRTL ? 'rtl' : 'ltr'}`}
+      dir={isRTL ? 'rtl' : 'ltr'}
+    >
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-blue-100 shadow-sm">
+      <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg">
+              <div className="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center text-white font-bold text-lg">
                 🚗
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-lg md:text-xl font-bold text-blue-700">{t.appName}</h1>
-                <p className="text-xs text-gray-500">{t.subtitle}</p>
+                <h1 className="text-lg md:text-xl font-bold text-slate-800">{t.appName}</h1>
+                <p className="text-xs text-slate-500">{t.subtitle}</p>
               </div>
             </div>
 
@@ -443,12 +452,13 @@ export default function Home() {
             <nav className="hidden md:flex items-center gap-1">
               {tabs.map((tab) => (
                 <button
+                  type="button"
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                     activeTab === tab.id
-                      ? 'bg-blue-600 text-white shadow-md'
-                      : 'text-gray-600 hover:bg-blue-50'
+                      ? 'bg-slate-800 text-white shadow-md'
+                      : 'text-slate-600 hover:bg-slate-100'
                   }`}
                 >
                   <tab.icon className="h-4 w-4" />
@@ -459,21 +469,20 @@ export default function Home() {
 
             {/* Right Side */}
             <div className="flex items-center gap-2">
-              {/* Install Button */}
-              {showInstallBanner && !isInstalled && (
-                <button
-                  onClick={handleInstallApp}
-                  className="flex items-center gap-1.5 px-3 py-2 bg-green-600 text-white rounded-lg text-sm font-medium shadow-md hover:bg-green-700"
-                >
-                  <Download className="h-4 w-4" />
-                  <span className="hidden sm:inline">{t.installBtn}</span>
-                </button>
-              )}
+              {/* Download Project Button */}
+              <a
+                href="/traffic-info-tunisie.zip"
+                download
+                className="flex items-center gap-1.5 px-3 py-2 bg-slate-700 text-white rounded-lg text-sm font-medium shadow-md hover:bg-slate-800"
+              >
+                <Download className="h-4 w-4" />
+                <span className="hidden sm:inline">{language === 'ar' ? 'تحميل المشروع' : language === 'fr' ? 'Télécharger' : 'Download'}</span>
+              </a>
               
               {/* Share Button */}
               <button
                 onClick={handleShare}
-                className="p-2 text-gray-600 hover:bg-blue-50 rounded-lg"
+                className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg"
               >
                 <Share2 className="h-5 w-5" />
               </button>
@@ -482,7 +491,7 @@ export default function Home() {
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value as Language)}
-                className="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm"
+                className="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm"
               >
                 <option value="ar">🇹🇳 العربية</option>
                 <option value="fr">🇫🇷 Français</option>
@@ -492,19 +501,20 @@ export default function Home() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2 rounded-lg hover:bg-blue-50"
+                className="md:hidden p-2 rounded-lg hover:bg-slate-100"
               >
-                <Car className="h-6 w-6 text-gray-600" />
+                <Car className="h-6 w-6 text-slate-600" />
               </button>
             </div>
           </div>
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <nav className="md:hidden pb-4 border-t border-blue-100 mt-2 pt-4">
+            <nav className="md:hidden pb-4 border-t border-slate-100 mt-2 pt-4">
               <div className="grid grid-cols-2 gap-2">
                 {tabs.map((tab) => (
                   <button
+                    type="button"
                     key={tab.id}
                     onClick={() => {
                       setActiveTab(tab.id);
@@ -512,8 +522,8 @@ export default function Home() {
                     }}
                     className={`flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-medium ${
                       activeTab === tab.id
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-blue-50 text-gray-600'
+                        ? 'bg-slate-800 text-white'
+                        : 'bg-slate-100 text-slate-600'
                     }`}
                   >
                     <tab.icon className="h-4 w-4" />
@@ -528,26 +538,26 @@ export default function Home() {
 
       {/* Install Banner */}
       {showInstallBanner && !isInstalled && (
-        <div className="bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-3">
+        <div className="bg-slate-800 text-white px-4 py-3">
           <div className="container mx-auto flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <Download className="h-6 w-6" />
               <div>
                 <p className="font-bold">{t.install}</p>
-                <p className="text-sm text-green-100">{t.installDesc}</p>
+                <p className="text-sm text-slate-300">{t.installDesc}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <Button
                 onClick={handleInstallApp}
-                className="bg-white text-green-700 hover:bg-green-50"
+                className="bg-white text-slate-800 hover:bg-slate-100"
               >
                 <Download className="h-4 w-4 mr-1" />
                 {t.installBtn}
               </Button>
               <button
                 onClick={() => setShowInstallBanner(false)}
-                className="p-2 hover:bg-green-800 rounded-lg"
+                className="p-2 hover:bg-slate-700 rounded-lg"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -561,14 +571,14 @@ export default function Home() {
         {/* Safety Section */}
         {activeTab === 'safety' && (
           <div className="space-y-4">
-            <Card className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white border-0 shadow-xl">
+            <Card className="bg-slate-800 text-white border-0 shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-2xl font-bold mb-2">{t.sections.safety.title}</h2>
-                    <p className="text-blue-100 text-sm">{t.sections.safety.subtitle}</p>
+                    <p className="text-slate-300 text-sm">{t.sections.safety.subtitle}</p>
                   </div>
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center">
                     <Car className="h-8 w-8" />
                   </div>
                 </div>
@@ -578,12 +588,12 @@ export default function Home() {
             {/* Quick Categories */}
             <div className="grid grid-cols-4 gap-2">
               {[
-                { icon: '🚦', label: t.sections.safety.congestion, color: 'bg-gradient-to-br from-red-500 to-orange-500' },
-                { icon: '📢', label: t.sections.safety.reports, color: 'bg-gradient-to-br from-blue-500 to-cyan-500' },
-                { icon: '🚧', label: t.sections.safety.roadworks, color: 'bg-gradient-to-br from-amber-500 to-yellow-500' },
-                { icon: '🎭', label: t.sections.safety.events, color: 'bg-gradient-to-br from-purple-500 to-pink-500' },
+                { icon: '🚦', label: t.sections.safety.congestion, color: 'bg-rose-700' },
+                { icon: '📢', label: t.sections.safety.reports, color: 'bg-slate-700' },
+                { icon: '🚧', label: t.sections.safety.roadworks, color: 'bg-amber-700' },
+                { icon: '🎭', label: t.sections.safety.events, color: 'bg-slate-600' },
               ].map((cat, idx) => (
-                <Card key={idx} className={`${cat.color} p-3 text-center text-white cursor-pointer hover:scale-105 transition-transform`}>
+                <Card key={idx} className={`${cat.color} p-3 text-center text-white cursor-pointer hover:opacity-90 transition-opacity`}>
                   <div className="text-2xl mb-1">{cat.icon}</div>
                   <h3 className="text-xs font-semibold">{cat.label}</h3>
                 </Card>
@@ -591,30 +601,30 @@ export default function Home() {
             </div>
 
             {/* Live Reports */}
-            <Card className="shadow-lg">
+            <Card className="shadow-lg border border-slate-200">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-bold text-blue-700 flex items-center gap-2">
-                    <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                  <h3 className="font-bold text-slate-800 flex items-center gap-2">
+                    <span className="w-2 h-2 bg-rose-500 rounded-full animate-pulse"></span>
                     {t.sections.safety.liveReports}
                   </h3>
-                  <Badge className="bg-blue-100 text-blue-700">{mockReports.length}</Badge>
+                  <Badge className="bg-slate-100 text-slate-700 border border-slate-200">{mockReports.length}</Badge>
                 </div>
 
                 <div className="space-y-3">
                   {mockReports.map((report) => (
-                    <Card key={report.id} className="p-4 bg-gray-50">
+                    <Card key={report.id} className="p-4 bg-slate-50 border border-slate-100">
                       <div className="flex items-start gap-3">
                         <div className="text-2xl">{reportTypeIcons[report.type] || '📢'}</div>
                         <div className="flex-1">
                           <div className="flex items-center justify-between">
-                            <h4 className="font-semibold text-gray-800">{report.title}</h4>
-                            <Badge variant="outline" className="border-green-500 text-green-600">
+                            <h4 className="font-semibold text-slate-800">{report.title}</h4>
+                            <Badge variant="outline" className="border-emerald-500 text-emerald-600">
                               {t.sections.safety.active}
                             </Badge>
                           </div>
-                          <p className="text-xs text-gray-500 mt-1">{report.description}</p>
-                          <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
+                          <p className="text-xs text-slate-500 mt-1">{report.description}</p>
+                          <div className="flex items-center gap-3 mt-2 text-xs text-slate-400">
                             <span className="flex items-center gap-1">
                               <MapPin className="h-3 w-3" />
                               {report.location}
@@ -624,12 +634,12 @@ export default function Home() {
                               {formatTimeAgo(report.createdAt)}
                             </span>
                           </div>
-                          <div className="flex items-center gap-4 mt-2 pt-2 border-t">
-                            <span className="flex items-center gap-1 text-xs text-blue-600">
+                          <div className="flex items-center gap-4 mt-2 pt-2 border-t border-slate-200">
+                            <span className="flex items-center gap-1 text-xs text-slate-600">
                               <ThumbsUp className="h-3 w-3" />
                               {report.votes} {t.sections.safety.vote}
                             </span>
-                            <span className="flex items-center gap-1 text-xs text-gray-400">
+                            <span className="flex items-center gap-1 text-xs text-slate-400">
                               <Eye className="h-3 w-3" />
                               {report.views} {t.sections.safety.views}
                             </span>
@@ -647,35 +657,58 @@ export default function Home() {
         {/* Citizen Section */}
         {activeTab === 'citizen' && (
           <div className="space-y-4">
-            <Card className="bg-gradient-to-l from-green-600 to-green-700 text-white border-0 shadow-xl">
+            <Card className="bg-emerald-800 text-white border-0 shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-2xl font-bold mb-1">{t.sections.citizen.title}</h2>
-                    <p className="text-green-100 text-sm">{t.sections.citizen.subtitle}</p>
+                    <p className="text-emerald-200 text-sm">{t.sections.citizen.subtitle}</p>
                   </div>
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-emerald-700 rounded-full flex items-center justify-center">
                     <Users className="h-8 w-8" />
                   </div>
                 </div>
               </CardContent>
             </Card>
 
+            {/* بطاقة الخطايا المالية - Financial Fines Card */}
+            <Card className="shadow-lg border-2 border-amber-500 bg-amber-50">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-20 h-20 bg-amber-600 rounded-xl flex items-center justify-center text-white text-4xl shadow-lg">
+                    💰
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-amber-900 text-2xl">{t.sections.citizen.financialFines}</h3>
+                    <p className="text-base text-amber-700 mt-2">{t.sections.citizen.financialFinesDesc}</p>
+                  </div>
+                  <Button 
+                    asChild
+                    className="bg-amber-600 hover:bg-amber-700 text-white shadow-lg px-8 py-3 text-lg"
+                  >
+                    <a href="https://amendes.finances.gov.tn/jsp/Amende/cons_amende.jsp" target="_blank" rel="noopener noreferrer">
+                      {language === 'ar' ? 'التحقق الآن' : language === 'fr' ? 'Vérifier' : 'Check Now'}
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Media Options */}
-            <Card className="shadow-lg">
+            <Card className="shadow-lg border border-slate-200">
               <CardContent className="p-4">
                 <div className="grid grid-cols-3 gap-4 text-center">
-                  <div className="p-4 bg-blue-50 rounded-xl">
+                  <div className="p-4 bg-slate-100 rounded-xl">
                     <div className="text-3xl mb-2">📸</div>
-                    <p className="text-sm font-medium">{t.sections.citizen.photos}</p>
+                    <p className="text-sm font-medium text-slate-700">{t.sections.citizen.photos}</p>
                   </div>
-                  <div className="p-4 bg-purple-50 rounded-xl">
+                  <div className="p-4 bg-slate-100 rounded-xl">
                     <div className="text-3xl mb-2">🎥</div>
-                    <p className="text-sm font-medium">{t.sections.citizen.videos}</p>
+                    <p className="text-sm font-medium text-slate-700">{t.sections.citizen.videos}</p>
                   </div>
-                  <div className="p-4 bg-green-50 rounded-xl">
+                  <div className="p-4 bg-slate-100 rounded-xl">
                     <div className="text-3xl mb-2">💬</div>
-                    <p className="text-sm font-medium">{t.sections.citizen.message}</p>
+                    <p className="text-sm font-medium text-slate-700">{t.sections.citizen.message}</p>
                   </div>
                 </div>
               </CardContent>
@@ -684,20 +717,20 @@ export default function Home() {
             {/* Alert Dialog */}
             <Dialog open={alertDialogOpen} onOpenChange={setAlertDialogOpen}>
               <DialogTrigger asChild>
-                <Button className="w-full bg-green-600 hover:bg-green-700 h-12 text-lg shadow-lg">
+                <Button className="w-full bg-emerald-700 hover:bg-emerald-800 h-12 text-lg shadow-lg">
                   <Send className="h-5 w-5 mr-2" />
                   {t.sections.citizen.sendAlert}
                 </Button>
               </DialogTrigger>
               <DialogContent className="max-w-md">
                 <DialogHeader>
-                  <DialogTitle className="text-green-700">{t.sections.citizen.sendAlert}</DialogTitle>
+                  <DialogTitle className="text-emerald-700">{t.sections.citizen.sendAlert}</DialogTitle>
                 </DialogHeader>
 
                 {submitSuccess ? (
                   <div className="text-center py-8">
-                    <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-                    <p className="text-lg font-medium text-green-600">{t.sections.citizen.form.success}</p>
+                    <CheckCircle className="h-16 w-16 text-emerald-500 mx-auto mb-4" />
+                    <p className="text-lg font-medium text-emerald-600">{t.sections.citizen.form.success}</p>
                   </div>
                 ) : (
                   <div className="space-y-4 pt-4">
@@ -743,7 +776,7 @@ export default function Home() {
                       <Button variant="outline" className="flex-1" onClick={() => setAlertDialogOpen(false)}>
                         {t.sections.citizen.form.cancel}
                       </Button>
-                      <Button className="flex-1 bg-green-600 hover:bg-green-700" onClick={handleSubmitAlert}>
+                      <Button className="flex-1 bg-emerald-700 hover:bg-emerald-800" onClick={handleSubmitAlert}>
                         <Send className="h-4 w-4 mr-2" />
                         {t.sections.citizen.form.submit}
                       </Button>
@@ -758,14 +791,14 @@ export default function Home() {
         {/* Contact Section */}
         {activeTab === 'contact' && (
           <div className="space-y-4">
-            <Card className="bg-gradient-to-l from-blue-700 to-blue-800 text-white border-0 shadow-xl">
+            <Card className="bg-slate-800 text-white border-0 shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-2xl font-bold mb-1">{t.sections.contact.title}</h2>
-                    <p className="text-blue-100 text-sm">{t.sections.contact.subtitle}</p>
+                    <p className="text-slate-300 text-sm">{t.sections.contact.subtitle}</p>
                   </div>
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center">
                     <Phone className="h-8 w-8" />
                   </div>
                 </div>
@@ -773,49 +806,49 @@ export default function Home() {
             </Card>
 
             {/* Emergency Numbers */}
-            <Card className="shadow-lg">
+            <Card className="shadow-lg border border-slate-200">
               <CardContent className="p-4 space-y-3">
-                <h3 className="font-bold text-red-600 flex items-center gap-2">
+                <h3 className="font-bold text-rose-600 flex items-center gap-2">
                   <AlertTriangle className="h-5 w-5" />
                   {t.sections.contact.emergency}
                 </h3>
                 
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between p-4 bg-blue-50 rounded-xl">
+                  <div className="flex items-center justify-between p-4 bg-slate-100 rounded-xl">
                     <div className="flex items-center gap-3">
                       <span className="text-3xl">🚔</span>
                       <div>
-                        <p className="font-medium">{t.sections.contact.police}</p>
-                        <p className="text-lg font-bold text-blue-700">197 - 193</p>
+                        <p className="font-medium text-slate-700">{t.sections.contact.police}</p>
+                        <p className="text-lg font-bold text-slate-800">197 - 193</p>
                       </div>
                     </div>
-                    <Button size="sm" className="bg-blue-600">
+                    <Button size="sm" className="bg-slate-700 hover:bg-slate-800">
                       <Phone className="h-4 w-4" />
                     </Button>
                   </div>
 
-                  <div className="flex items-center justify-between p-4 bg-green-50 rounded-xl">
+                  <div className="flex items-center justify-between p-4 bg-slate-100 rounded-xl">
                     <div className="flex items-center gap-3">
                       <span className="text-3xl">🚑</span>
                       <div>
-                        <p className="font-medium">{t.sections.contact.ambulance}</p>
-                        <p className="text-lg font-bold text-green-700">190</p>
+                        <p className="font-medium text-slate-700">{t.sections.contact.ambulance}</p>
+                        <p className="text-lg font-bold text-slate-800">190</p>
                       </div>
                     </div>
-                    <Button size="sm" className="bg-green-600">
+                    <Button size="sm" className="bg-slate-700 hover:bg-slate-800">
                       <Phone className="h-4 w-4" />
                     </Button>
                   </div>
 
-                  <div className="flex items-center justify-between p-4 bg-orange-50 rounded-xl">
+                  <div className="flex items-center justify-between p-4 bg-slate-100 rounded-xl">
                     <div className="flex items-center gap-3">
                       <span className="text-3xl">🚒</span>
                       <div>
-                        <p className="font-medium">{t.sections.contact.civilProtection}</p>
-                        <p className="text-lg font-bold text-orange-700">198</p>
+                        <p className="font-medium text-slate-700">{t.sections.contact.civilProtection}</p>
+                        <p className="text-lg font-bold text-slate-800">198</p>
                       </div>
                     </div>
-                    <Button size="sm" className="bg-orange-600">
+                    <Button size="sm" className="bg-slate-700 hover:bg-slate-800">
                       <Phone className="h-4 w-4" />
                     </Button>
                   </div>
@@ -824,10 +857,10 @@ export default function Home() {
             </Card>
 
             {/* Email */}
-            <Card className="shadow-lg border-2 border-cyan-200">
+            <Card className="shadow-lg border border-slate-200">
               <CardContent className="p-4">
-                <p className="text-xs text-gray-500 mb-1">📧 {language === 'ar' ? 'البريد الإلكتروني' : 'Email'}</p>
-                <a href="mailto:d.police.circulation.tun@gmail.com" className="font-bold text-cyan-700 text-lg underline">
+                <p className="text-xs text-slate-500 mb-1">📧 {language === 'ar' ? 'البريد الإلكتروني' : 'Email'}</p>
+                <a href="mailto:d.police.circulation.tun@gmail.com" className="font-bold text-slate-800 text-lg underline">
                   d.police.circulation.tun@gmail.com
                 </a>
               </CardContent>
@@ -838,14 +871,14 @@ export default function Home() {
         {/* Services Section */}
         {activeTab === 'services' && (
           <div className="space-y-4">
-            <Card className="bg-gradient-to-l from-purple-600 to-purple-700 text-white border-0 shadow-xl">
+            <Card className="bg-slate-700 text-white border-0 shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-2xl font-bold mb-1">{t.sections.services.title}</h2>
-                    <p className="text-purple-100 text-sm">{t.sections.services.subtitle}</p>
+                    <p className="text-slate-300 text-sm">{t.sections.services.subtitle}</p>
                   </div>
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-slate-600 rounded-full flex items-center justify-center">
                     <Settings className="h-8 w-8" />
                   </div>
                 </div>
@@ -854,19 +887,19 @@ export default function Home() {
 
             <div className="grid grid-cols-1 gap-2">
               {[
-                { icon: '🚗', title: t.sections.services.license, color: 'bg-blue-50' },
-                { icon: '🚧', title: t.sections.services.roadworkPermit, color: 'bg-green-50' },
-                { icon: '📷', title: t.sections.services.radar, color: 'bg-indigo-50' },
-                { icon: '⚠️', title: t.sections.services.violations, color: 'bg-orange-50' },
-                { icon: '🛡️', title: t.sections.services.accidents, color: 'bg-red-50' },
-                { icon: '💳', title: t.sections.services.eservices, color: 'bg-purple-50' },
-                { icon: '❓', title: t.sections.services.faq, color: 'bg-cyan-50' },
+                { icon: '🚗', title: t.sections.services.license },
+                { icon: '🚧', title: t.sections.services.roadworkPermit },
+                { icon: '📷', title: t.sections.services.radar },
+                { icon: '⚠️', title: t.sections.services.violations },
+                { icon: '🛡️', title: t.sections.services.accidents },
+                { icon: '💳', title: t.sections.services.eservices },
+                { icon: '❓', title: t.sections.services.faq },
               ].map((service, index) => (
-                <Card key={index} className={`${service.color} cursor-pointer hover:shadow-lg transition-shadow`}>
+                <Card key={index} className="bg-slate-100 border border-slate-200 cursor-pointer hover:bg-slate-200 transition-colors">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-4">
                       <div className="text-2xl">{service.icon}</div>
-                      <span className="font-medium text-gray-700">{service.title}</span>
+                      <span className="font-medium text-slate-700">{service.title}</span>
                     </div>
                   </CardContent>
                 </Card>
@@ -877,26 +910,27 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-blue-700 to-blue-800 text-white mt-auto">
+      <footer className="bg-slate-800 text-white mt-auto">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-sm">
             <div className="flex items-center gap-2">
               <span className="font-bold">{t.appName}</span>
             </div>
-            <div className="text-blue-200">🇹🇳 {language === 'ar' ? 'الجمهورية التونسية' : 'République Tunisienne'}</div>
+            <div className="text-slate-300">🇹🇳 {language === 'ar' ? 'الجمهورية التونسية' : 'République Tunisienne'}</div>
           </div>
         </div>
       </footer>
 
       {/* Mobile Bottom Navigation */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-50">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-lg z-40">
         <div className="grid grid-cols-4 gap-1 p-2">
           {tabs.map((tab) => (
             <button
+              type="button"
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex flex-col items-center gap-1 px-2 py-2 rounded-lg text-xs ${
-                activeTab === tab.id ? 'bg-blue-100 text-blue-700' : 'text-gray-500'
+                activeTab === tab.id ? 'bg-slate-100 text-slate-800' : 'text-slate-500'
               }`}
             >
               <tab.icon className="h-5 w-5" />
