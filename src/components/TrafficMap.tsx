@@ -25,22 +25,22 @@ const createIcon = (type: string) => {
     html: `
       <div style="
         background: ${config.color};
-        width: 36px;
-        height: 36px;
-        border-radius: 50% 50% 50% 0;
-        transform: rotate(-45deg);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        border: 2px solid white;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        border: 3px solid white;
+        font-size: 20px;
       ">
-        <span style="transform: rotate(45deg); font-size: 16px;">${config.emoji}</span>
+        ${config.emoji}
       </div>
     `,
-    iconSize: [36, 36],
-    iconAnchor: [18, 36],
-    popupAnchor: [0, -36],
+    iconSize: [40, 40],
+    iconAnchor: [20, 20],
+    popupAnchor: [0, -20],
   });
 };
 
@@ -80,23 +80,6 @@ function FitBounds({ reports }: { reports: Report[] }) {
   return null;
 }
 
-// Component to center on user location
-function LocationMarker({ onLocationFound }: { onLocationFound?: (lat: number, lng: number) => void }) {
-  const map = useMap();
-
-  useEffect(() => {
-    map.locate({ setView: true, maxZoom: 16 });
-
-    map.on('locationfound', (e) => {
-      if (onLocationFound) {
-        onLocationFound(e.latlng.lat, e.latlng.lng);
-      }
-    });
-  }, [map, onLocationFound]);
-
-  return null;
-}
-
 const translations = {
   ar: {
     location: 'الموقع',
@@ -105,6 +88,8 @@ const translations = {
     status: 'الحالة',
     active: 'نشط',
     resolved: 'تم الحل',
+    mapTitle: 'خريطة الطرقات',
+    mapSubtitle: 'تونس',
   },
   fr: {
     location: 'Localisation',
@@ -113,6 +98,8 @@ const translations = {
     status: 'Statut',
     active: 'actif',
     resolved: 'résolu',
+    mapTitle: 'Carte Routière',
+    mapSubtitle: 'Tunisie',
   },
   en: {
     location: 'Location',
@@ -121,6 +108,8 @@ const translations = {
     status: 'Status',
     active: 'active',
     resolved: 'resolved',
+    mapTitle: 'Road Map',
+    mapSubtitle: 'Tunisia',
   },
 };
 
@@ -158,56 +147,70 @@ export default function TrafficMap({ reports, language, onReportClick }: MapProp
   };
 
   return (
-    <MapContainer
-      center={tunisiaCenter}
-      zoom={7}
-      style={{ height: '100%', width: '100%', borderRadius: '12px' }}
-      scrollWheelZoom={true}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+    <div className="relative w-full h-full rounded-xl overflow-hidden">
+      {/* Map Header */}
+      <div className="absolute top-3 left-3 z-[1000] bg-white/95 backdrop-blur-sm px-3 py-2 rounded-lg shadow-lg">
+        <div className="flex items-center gap-2">
+          <span className="text-xl">🗺️</span>
+          <div>
+            <p className="font-bold text-slate-800 text-sm">{t.mapTitle}</p>
+            <p className="text-xs text-slate-500">{t.mapSubtitle} 🇹🇳</p>
+          </div>
+        </div>
+      </div>
 
-      {markers.map((marker) => (
-        <Marker
-          key={marker.id}
-          position={marker.position}
-          icon={createIcon(marker.type)}
-          eventHandlers={{
-            click: () => onReportClick?.(marker),
-          }}
-        >
-          <Popup>
-            <div className="p-1 min-w-[200px]">
-              <h3 className="font-bold text-gray-800 mb-2">{marker.title}</h3>
-              {marker.description && (
-                <p className="text-sm text-gray-600 mb-2">{marker.description}</p>
-              )}
-              <div className="text-xs text-gray-500 space-y-1">
-                <div className="flex items-center gap-1">
-                  <span>📍</span>
-                  <span>{marker.location}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span>🕐</span>
-                  <span>{formatTimeAgo(marker.createdAt)}</span>
-                </div>
-                <div className="flex items-center gap-2 mt-2">
-                  <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">
-                    👍 {marker.votes} {t.votes}
-                  </span>
-                  <span className="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-xs">
-                    👁 {marker.views} {t.views}
-                  </span>
+      <MapContainer
+        center={tunisiaCenter}
+        zoom={7}
+        style={{ height: '100%', width: '100%', borderRadius: '12px' }}
+        scrollWheelZoom={true}
+        zoomControl={false}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+
+        {markers.map((marker) => (
+          <Marker
+            key={marker.id}
+            position={marker.position}
+            icon={createIcon(marker.type)}
+            eventHandlers={{
+              click: () => onReportClick?.(marker),
+            }}
+          >
+            <Popup>
+              <div className="p-1 min-w-[200px]">
+                <h3 className="font-bold text-gray-800 mb-2">{marker.title}</h3>
+                {marker.description && (
+                  <p className="text-sm text-gray-600 mb-2">{marker.description}</p>
+                )}
+                <div className="text-xs text-gray-500 space-y-1">
+                  <div className="flex items-center gap-1">
+                    <span>📍</span>
+                    <span>{marker.location}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span>🕐</span>
+                    <span>{formatTimeAgo(marker.createdAt)}</span>
+                  </div>
+                  <div className="flex items-center gap-2 mt-2">
+                    <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">
+                      👍 {marker.votes} {t.votes}
+                    </span>
+                    <span className="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-xs">
+                      👁 {marker.views} {t.views}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Popup>
-        </Marker>
-      ))}
+            </Popup>
+          </Marker>
+        ))}
 
-      {markers.length > 0 && <FitBounds reports={reports} />}
-    </MapContainer>
+        {markers.length > 0 && <FitBounds reports={reports} />}
+      </MapContainer>
+    </div>
   );
 }
