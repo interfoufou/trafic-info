@@ -1,11 +1,22 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+
+// Dynamic import for map (leaflet doesn't work with SSR)
+const TrafficMap = dynamic(() => import('@/components/TrafficMap'), {
+  ssr: false,
+  loading: () => (
+    <div className="h-64 bg-slate-100 rounded-xl flex items-center justify-center">
+      <span className="text-slate-500">جاري تحميل الخريطة...</span>
+    </div>
+  ),
+});
 import {
   Dialog,
   DialogContent,
@@ -599,6 +610,15 @@ export default function Home() {
                 </Card>
               ))}
             </div>
+
+            {/* Map Section */}
+            <Card className="shadow-lg border border-slate-200 overflow-hidden">
+              <CardContent className="p-0">
+                <div className="h-64 md:h-80">
+                  <TrafficMap reports={[]} language={language} />
+                </div>
+              </CardContent>
+            </Card>
 
             {/* Live Reports */}
             <Card className="shadow-lg border border-slate-200">
