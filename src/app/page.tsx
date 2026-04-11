@@ -978,7 +978,7 @@ export default function Home() {
                   <CardContent className="p-4">
                     <div className="flex items-center gap-4">
                       {service.icon === 'radar' ? (
-                        <Image src="/icons/radar.svg" alt="Radar" width={32} height={32} className="w-8 h-8" />
+                        <Image src="/icons/radar.png" alt="Radar" width={32} height={32} className="w-8 h-8 object-contain" />
                       ) : (
                         <div className="text-2xl">{service.icon}</div>
                       )}
