@@ -318,9 +318,9 @@ const mockReports = [
   {
     id: '2',
     type: 'roadwork',
-    title: 'أشغال بالطريق الوطنية رقم 1',
-    description: 'أشغال صيانة على الطريق الوطنية رقم 1',
-    location: 'الطريق الوطنية رقم 1 - تونس',
+    title: 'أشغال مدخل المحول الجنوبي للعاصمة',
+    description: 'أسغال إزالة قنطرة المروج',
+    location: 'المحول الجنوبي - تونس',
     status: 'active',
     votes: 8,
     views: 45,
