@@ -876,6 +876,64 @@ export default function Home() {
               </CardContent>
             </Card>
 
+            {/* Administration Numbers */}
+            <Card className="shadow-lg border border-slate-200">
+              <CardContent className="p-4 space-y-3">
+                <h3 className="font-bold text-blue-700 flex items-center gap-2">
+                  <Phone className="h-5 w-5" />
+                  {language === 'ar' ? 'أرقام إدارة شرطة المرور' : language === 'fr' ? 'Numéros de l\'Administration' : 'Traffic Police Administration'}
+                </h3>
+                
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="text-center p-3 bg-slate-50 rounded-xl">
+                    <p className="text-xs text-slate-500 mb-1">{language === 'ar' ? 'الهاتف 1' : 'Tel 1'}</p>
+                    <p className="font-bold text-slate-800 text-lg" dir="ltr">71 343 201</p>
+                    <a href="tel:71343201" className="text-xs text-blue-600 hover:underline">{language === 'ar' ? 'اتصل' : 'Call'}</a>
+                  </div>
+                  <div className="text-center p-3 bg-slate-50 rounded-xl">
+                    <p className="text-xs text-slate-500 mb-1">{language === 'ar' ? 'الهاتف 2' : 'Tel 2'}</p>
+                    <p className="font-bold text-slate-800 text-lg" dir="ltr">71 342 875</p>
+                    <a href="tel:71342875" className="text-xs text-blue-600 hover:underline">{language === 'ar' ? 'اتصل' : 'Call'}</a>
+                  </div>
+                  <div className="text-center p-3 bg-slate-50 rounded-xl">
+                    <p className="text-xs text-slate-500 mb-1">{language === 'ar' ? 'الهاتف 3' : 'Tel 3'}</p>
+                    <p className="font-bold text-slate-800 text-lg" dir="ltr">71 342 787</p>
+                    <a href="tel:71342787" className="text-xs text-blue-600 hover:underline">{language === 'ar' ? 'اتصل' : 'Call'}</a>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between p-3 bg-purple-50 rounded-xl border border-purple-100">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">📠</span>
+                    <div>
+                      <p className="text-xs text-slate-500">{language === 'ar' ? 'الفاكس' : 'Fax'}</p>
+                      <p className="font-bold text-slate-800" dir="ltr">71 343 146</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-3 bg-green-50 rounded-xl border border-green-100">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">🕐</span>
+                    <div>
+                      <p className="font-medium text-green-800">{language === 'ar' ? 'ساعات العمل' : language === 'fr' ? 'Heures d\'ouverture' : 'Working Hours'}</p>
+                      <p className="text-sm text-green-600">{language === 'ar' ? 'خدمة متواصلة 24/24 ساعة - 7 أيام' : language === 'fr' ? 'Service 24h/24 - 7 jours' : '24/7 Service'}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">📍</span>
+                    <div>
+                      <p className="font-medium text-blue-800">{language === 'ar' ? 'العنوان' : language === 'fr' ? 'Adresse' : 'Address'}</p>
+                      <p className="text-sm text-blue-600">{language === 'ar' ? 'شارع الجمهورية 1001 تونس' : 'Rue de la République 1001 Tunis'}</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Email */}
             <Card className="shadow-lg border border-slate-200">
               <CardContent className="p-4">
