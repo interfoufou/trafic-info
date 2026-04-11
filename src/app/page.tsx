@@ -308,7 +308,7 @@ const mockReports = [
     id: '1',
     type: 'traffic_jam',
     title: 'إكتظاظ مروري بوسط العاصمة',
-    description: 'ازدحام شديد بسبب حادث مروري',
+    description: 'تراكم مياه الأمطار مستوى شارع الجمهورية',
     location: 'وسط العاصمة - المرسى',
     status: 'active',
     votes: 15,
