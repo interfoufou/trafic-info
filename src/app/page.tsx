@@ -442,20 +442,20 @@ export default function Home() {
 
   return (
     <div 
-      className={`min-h-screen flex flex-col bg-slate-50 ${isRTL ? 'rtl' : 'ltr'}`}
+      className={`min-h-screen flex flex-col bg-gray-100 ${isRTL ? 'rtl' : 'ltr'}`}
       dir={isRTL ? 'rtl' : 'ltr'}
     >
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+      <header className="sticky top-0 z-50 bg-gray-900 border-b border-gray-700 shadow-md">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center text-white font-bold text-lg">
+              <div className="w-12 h-12 rounded-lg bg-red-700 flex items-center justify-center text-white font-bold text-lg">
                 🚗
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-lg md:text-xl font-bold text-slate-800">{t.appName}</h1>
-                <p className="text-xs text-slate-500">{t.subtitle}</p>
+                <h1 className="text-lg md:text-xl font-bold text-gray-900">{t.appName}</h1>
+                <p className="text-xs text-gray-600">{t.subtitle}</p>
               </div>
             </div>
 
@@ -468,8 +468,8 @@ export default function Home() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                     activeTab === tab.id
-                      ? 'bg-slate-800 text-white shadow-md'
-                      : 'text-slate-600 hover:bg-slate-100'
+                      ? 'bg-red-700 text-white shadow-md'
+                      : 'text-gray-200 hover:bg-gray-800'
                   }`}
                 >
                   <tab.icon className="h-4 w-4" />
@@ -484,7 +484,7 @@ export default function Home() {
               <a
                 href="/traffic-info-tunisie.zip"
                 download
-                className="flex items-center gap-1.5 px-3 py-2 bg-slate-700 text-white rounded-lg text-sm font-medium shadow-md hover:bg-slate-800"
+                className="flex items-center gap-1.5 px-3 py-2 bg-red-700 text-white rounded-lg text-sm font-medium shadow-md hover:bg-red-800"
               >
                 <Download className="h-4 w-4" />
                 <span className="hidden sm:inline">{language === 'ar' ? 'تحميل المشروع' : language === 'fr' ? 'Télécharger' : 'Download'}</span>
@@ -493,7 +493,7 @@ export default function Home() {
               {/* Share Button */}
               <button
                 onClick={handleShare}
-                className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg"
+                className="p-2 text-gray-300 hover:bg-gray-800 rounded-lg"
               >
                 <Share2 className="h-5 w-5" />
               </button>
@@ -502,7 +502,7 @@ export default function Home() {
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value as Language)}
-                className="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm"
+                className="bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white"
               >
                 <option value="ar">🇹🇳 العربية</option>
                 <option value="fr">🇫🇷 Français</option>
@@ -512,16 +512,16 @@ export default function Home() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2 rounded-lg hover:bg-slate-100"
+                className="md:hidden p-2 rounded-lg hover:bg-gray-800 text-gray-300"
               >
-                <Car className="h-6 w-6 text-slate-600" />
+                <Car className="h-6 w-6 text-gray-300" />
               </button>
             </div>
           </div>
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <nav className="md:hidden pb-4 border-t border-slate-100 mt-2 pt-4">
+            <nav className="md:hidden pb-4 border-t border-gray-700 mt-2 pt-4">
               <div className="grid grid-cols-2 gap-2">
                 {tabs.map((tab) => (
                   <button
@@ -533,8 +533,8 @@ export default function Home() {
                     }}
                     className={`flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-medium ${
                       activeTab === tab.id
-                        ? 'bg-slate-800 text-white'
-                        : 'bg-slate-100 text-slate-600'
+                        ? 'bg-red-700 text-white'
+                        : 'bg-gray-800 text-gray-300'
                     }`}
                   >
                     <tab.icon className="h-4 w-4" />
@@ -549,26 +549,26 @@ export default function Home() {
 
       {/* Install Banner */}
       {showInstallBanner && !isInstalled && (
-        <div className="bg-slate-800 text-white px-4 py-3">
+        <div className="bg-gray-900 text-white px-4 py-3">
           <div className="container mx-auto flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <Download className="h-6 w-6" />
               <div>
                 <p className="font-bold">{t.install}</p>
-                <p className="text-sm text-slate-300">{t.installDesc}</p>
+                <p className="text-sm text-gray-400">{t.installDesc}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <Button
                 onClick={handleInstallApp}
-                className="bg-white text-slate-800 hover:bg-slate-100"
+                className="bg-red-700 text-white hover:bg-red-800"
               >
                 <Download className="h-4 w-4 mr-1" />
                 {t.installBtn}
               </Button>
               <button
                 onClick={() => setShowInstallBanner(false)}
-                className="p-2 hover:bg-slate-700 rounded-lg"
+                className="p-2 hover:bg-gray-800 rounded-lg"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -582,14 +582,14 @@ export default function Home() {
         {/* Safety Section */}
         {activeTab === 'safety' && (
           <div className="space-y-4">
-            <Card className="bg-slate-800 text-white border-0 shadow-lg">
+            <Card className="bg-gray-900 text-white border-0 shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-2xl font-bold mb-2">{t.sections.safety.title}</h2>
-                    <p className="text-slate-300 text-sm">{t.sections.safety.subtitle}</p>
+                    <p className="text-gray-400 text-sm">{t.sections.safety.subtitle}</p>
                   </div>
-                  <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center">
                     <Car className="h-8 w-8" />
                   </div>
                 </div>
@@ -599,10 +599,10 @@ export default function Home() {
             {/* Quick Categories */}
             <div className="grid grid-cols-4 gap-2">
               {[
-                { icon: '🚦', label: t.sections.safety.congestion, color: 'bg-rose-700' },
-                { icon: '📢', label: t.sections.safety.reports, color: 'bg-slate-700' },
-                { icon: '🚧', label: t.sections.safety.roadworks, color: 'bg-amber-700' },
-                { icon: '🎭', label: t.sections.safety.events, color: 'bg-slate-600' },
+                { icon: '🚦', label: t.sections.safety.congestion, color: 'bg-red-700' },
+                { icon: '📢', label: t.sections.safety.reports, color: 'bg-gray-700' },
+                { icon: '🚧', label: t.sections.safety.roadworks, color: 'bg-orange-700' },
+                { icon: '🎭', label: t.sections.safety.events, color: 'bg-gray-600' },
               ].map((cat, idx) => (
                 <Card key={idx} className={`${cat.color} p-3 text-center text-white cursor-pointer hover:opacity-90 transition-opacity`}>
                   <div className="text-2xl mb-1">{cat.icon}</div>
@@ -612,7 +612,7 @@ export default function Home() {
             </div>
 
             {/* Map Section */}
-            <Card className="shadow-lg border border-slate-200 overflow-hidden">
+            <Card className="shadow-lg border border-gray-200 overflow-hidden">
               <CardContent className="p-0">
                 <div className="h-64 md:h-80">
                   <TrafficMap reports={[]} language={language} />
@@ -621,30 +621,30 @@ export default function Home() {
             </Card>
 
             {/* Live Reports */}
-            <Card className="shadow-lg border border-slate-200">
+            <Card className="shadow-lg border border-gray-200">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-bold text-slate-800 flex items-center gap-2">
-                    <span className="w-2 h-2 bg-rose-500 rounded-full animate-pulse"></span>
+                  <h3 className="font-bold text-gray-800 flex items-center gap-2">
+                    <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span>
                     {t.sections.safety.liveReports}
                   </h3>
-                  <Badge className="bg-slate-100 text-slate-700 border border-slate-200">{mockReports.length}</Badge>
+                  <Badge className="bg-gray-100 text-gray-700 border border-gray-200">{mockReports.length}</Badge>
                 </div>
 
                 <div className="space-y-3">
                   {mockReports.map((report) => (
-                    <Card key={report.id} className="p-4 bg-slate-50 border border-slate-100">
+                    <Card key={report.id} className="p-4 bg-gray-50 border border-gray-200">
                       <div className="flex items-start gap-3">
                         <div className="text-2xl">{reportTypeIcons[report.type] || '📢'}</div>
                         <div className="flex-1">
                           <div className="flex items-center justify-between">
-                            <h4 className="font-semibold text-slate-800">{report.title}</h4>
-                            <Badge variant="outline" className="border-emerald-500 text-emerald-600">
+                            <h4 className="font-semibold text-gray-800">{report.title}</h4>
+                            <Badge variant="outline" className="border-gray-600 text-gray-700">
                               {t.sections.safety.active}
                             </Badge>
                           </div>
-                          <p className="text-xs text-slate-500 mt-1">{report.description}</p>
-                          <div className="flex items-center gap-3 mt-2 text-xs text-slate-400">
+                          <p className="text-xs text-gray-500 mt-1">{report.description}</p>
+                          <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
                             <span className="flex items-center gap-1">
                               <MapPin className="h-3 w-3" />
                               {report.location}
@@ -654,12 +654,12 @@ export default function Home() {
                               {formatTimeAgo(report.createdAt)}
                             </span>
                           </div>
-                          <div className="flex items-center gap-4 mt-2 pt-2 border-t border-slate-200">
-                            <span className="flex items-center gap-1 text-xs text-slate-600">
+                          <div className="flex items-center gap-4 mt-2 pt-2 border-t border-gray-200">
+                            <span className="flex items-center gap-1 text-xs text-gray-600">
                               <ThumbsUp className="h-3 w-3" />
                               {report.votes} {t.sections.safety.vote}
                             </span>
-                            <span className="flex items-center gap-1 text-xs text-slate-400">
+                            <span className="flex items-center gap-1 text-xs text-gray-400">
                               <Eye className="h-3 w-3" />
                               {report.views} {t.sections.safety.views}
                             </span>
@@ -677,14 +677,14 @@ export default function Home() {
         {/* Citizen Section */}
         {activeTab === 'citizen' && (
           <div className="space-y-4">
-            <Card className="bg-emerald-800 text-white border-0 shadow-lg">
+            <Card className="bg-gray-900 text-white border-0 shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-2xl font-bold mb-1">{t.sections.citizen.title}</h2>
-                    <p className="text-emerald-200 text-sm">{t.sections.citizen.subtitle}</p>
+                    <p className="text-gray-300 text-sm">{t.sections.citizen.subtitle}</p>
                   </div>
-                  <div className="w-16 h-16 bg-emerald-700 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center">
                     <Users className="h-8 w-8" />
                   </div>
                 </div>
@@ -692,19 +692,19 @@ export default function Home() {
             </Card>
 
             {/* بطاقة الخطايا المالية - Financial Fines Card */}
-            <Card className="shadow-lg border-2 border-amber-500 bg-amber-50">
+            <Card className="shadow-lg border-2 border-red-600 bg-red-50">
               <CardContent className="p-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-20 h-20 bg-amber-600 rounded-xl flex items-center justify-center text-white text-4xl shadow-lg">
+                  <div className="w-20 h-20 bg-red-700 rounded-xl flex items-center justify-center text-white text-4xl shadow-lg">
                     💰
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-amber-900 text-2xl">{t.sections.citizen.financialFines}</h3>
-                    <p className="text-base text-amber-700 mt-2">{t.sections.citizen.financialFinesDesc}</p>
+                    <h3 className="font-bold text-red-900 text-2xl">{t.sections.citizen.financialFines}</h3>
+                    <p className="text-base text-red-700 mt-2">{t.sections.citizen.financialFinesDesc}</p>
                   </div>
                   <Button 
                     asChild
-                    className="bg-amber-600 hover:bg-amber-700 text-white shadow-lg px-8 py-3 text-lg"
+                    className="bg-red-700 hover:bg-red-800 text-white shadow-lg px-8 py-3 text-lg"
                   >
                     <a href="https://amendes.finances.gov.tn/jsp/Amende/cons_amende.jsp" target="_blank" rel="noopener noreferrer">
                       {language === 'ar' ? 'التحقق الآن' : language === 'fr' ? 'Vérifier' : 'Check Now'}
@@ -715,20 +715,20 @@ export default function Home() {
             </Card>
 
             {/* Media Options */}
-            <Card className="shadow-lg border border-slate-200">
+            <Card className="shadow-lg border border-gray-200">
               <CardContent className="p-4">
                 <div className="grid grid-cols-3 gap-4 text-center">
-                  <div className="p-4 bg-slate-100 rounded-xl">
+                  <div className="p-4 bg-gray-100 rounded-xl">
                     <div className="text-3xl mb-2">📸</div>
-                    <p className="text-sm font-medium text-slate-700">{t.sections.citizen.photos}</p>
+                    <p className="text-sm font-medium text-gray-700">{t.sections.citizen.photos}</p>
                   </div>
-                  <div className="p-4 bg-slate-100 rounded-xl">
+                  <div className="p-4 bg-gray-100 rounded-xl">
                     <div className="text-3xl mb-2">🎥</div>
-                    <p className="text-sm font-medium text-slate-700">{t.sections.citizen.videos}</p>
+                    <p className="text-sm font-medium text-gray-700">{t.sections.citizen.videos}</p>
                   </div>
-                  <div className="p-4 bg-slate-100 rounded-xl">
+                  <div className="p-4 bg-gray-100 rounded-xl">
                     <div className="text-3xl mb-2">💬</div>
-                    <p className="text-sm font-medium text-slate-700">{t.sections.citizen.message}</p>
+                    <p className="text-sm font-medium text-gray-700">{t.sections.citizen.message}</p>
                   </div>
                 </div>
               </CardContent>
@@ -737,20 +737,20 @@ export default function Home() {
             {/* Alert Dialog */}
             <Dialog open={alertDialogOpen} onOpenChange={setAlertDialogOpen}>
               <DialogTrigger asChild>
-                <Button className="w-full bg-emerald-700 hover:bg-emerald-800 h-12 text-lg shadow-lg">
+                <Button className="w-full bg-gray-800 hover:bg-gray-900 h-12 text-lg shadow-lg">
                   <Send className="h-5 w-5 mr-2" />
                   {t.sections.citizen.sendAlert}
                 </Button>
               </DialogTrigger>
               <DialogContent className="max-w-md">
                 <DialogHeader>
-                  <DialogTitle className="text-emerald-700">{t.sections.citizen.sendAlert}</DialogTitle>
+                  <DialogTitle className="text-gray-800">{t.sections.citizen.sendAlert}</DialogTitle>
                 </DialogHeader>
 
                 {submitSuccess ? (
                   <div className="text-center py-8">
-                    <CheckCircle className="h-16 w-16 text-emerald-500 mx-auto mb-4" />
-                    <p className="text-lg font-medium text-emerald-600">{t.sections.citizen.form.success}</p>
+                    <CheckCircle className="h-16 w-16 text-gray-600 mx-auto mb-4" />
+                    <p className="text-lg font-medium text-gray-700">{t.sections.citizen.form.success}</p>
                   </div>
                 ) : (
                   <div className="space-y-4 pt-4">
@@ -796,7 +796,7 @@ export default function Home() {
                       <Button variant="outline" className="flex-1" onClick={() => setAlertDialogOpen(false)}>
                         {t.sections.citizen.form.cancel}
                       </Button>
-                      <Button className="flex-1 bg-emerald-700 hover:bg-emerald-800" onClick={handleSubmitAlert}>
+                      <Button className="flex-1 bg-gray-800 hover:bg-gray-900" onClick={handleSubmitAlert}>
                         <Send className="h-4 w-4 mr-2" />
                         {t.sections.citizen.form.submit}
                       </Button>
@@ -811,14 +811,14 @@ export default function Home() {
         {/* Contact Section */}
         {activeTab === 'contact' && (
           <div className="space-y-4">
-            <Card className="bg-slate-800 text-white border-0 shadow-lg">
+            <Card className="bg-gray-900 text-white border-0 shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-2xl font-bold mb-1">{t.sections.contact.title}</h2>
-                    <p className="text-slate-300 text-sm">{t.sections.contact.subtitle}</p>
+                    <p className="text-gray-400 text-sm">{t.sections.contact.subtitle}</p>
                   </div>
-                  <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center">
                     <Phone className="h-8 w-8" />
                   </div>
                 </div>
@@ -826,49 +826,49 @@ export default function Home() {
             </Card>
 
             {/* Emergency Numbers */}
-            <Card className="shadow-lg border border-slate-200">
+            <Card className="shadow-lg border border-gray-200">
               <CardContent className="p-4 space-y-3">
-                <h3 className="font-bold text-rose-600 flex items-center gap-2">
+                <h3 className="font-bold text-red-600 flex items-center gap-2">
                   <AlertTriangle className="h-5 w-5" />
                   {t.sections.contact.emergency}
                 </h3>
                 
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between p-4 bg-slate-100 rounded-xl">
+                  <div className="flex items-center justify-between p-4 bg-gray-100 rounded-xl">
                     <div className="flex items-center gap-3">
                       <span className="text-3xl">🚔</span>
                       <div>
-                        <p className="font-medium text-slate-700">{t.sections.contact.police}</p>
-                        <p className="text-lg font-bold text-slate-800">197 - 193</p>
+                        <p className="font-medium text-gray-700">{t.sections.contact.police}</p>
+                        <p className="text-lg font-bold text-gray-800">197 - 193</p>
                       </div>
                     </div>
-                    <Button size="sm" className="bg-slate-700 hover:bg-slate-800">
+                    <Button size="sm" className="bg-gray-800 hover:bg-gray-900">
                       <Phone className="h-4 w-4" />
                     </Button>
                   </div>
 
-                  <div className="flex items-center justify-between p-4 bg-slate-100 rounded-xl">
+                  <div className="flex items-center justify-between p-4 bg-gray-100 rounded-xl">
                     <div className="flex items-center gap-3">
                       <span className="text-3xl">🚑</span>
                       <div>
-                        <p className="font-medium text-slate-700">{t.sections.contact.ambulance}</p>
-                        <p className="text-lg font-bold text-slate-800">190</p>
+                        <p className="font-medium text-gray-700">{t.sections.contact.ambulance}</p>
+                        <p className="text-lg font-bold text-gray-800">190</p>
                       </div>
                     </div>
-                    <Button size="sm" className="bg-slate-700 hover:bg-slate-800">
+                    <Button size="sm" className="bg-gray-800 hover:bg-gray-900">
                       <Phone className="h-4 w-4" />
                     </Button>
                   </div>
 
-                  <div className="flex items-center justify-between p-4 bg-slate-100 rounded-xl">
+                  <div className="flex items-center justify-between p-4 bg-gray-100 rounded-xl">
                     <div className="flex items-center gap-3">
                       <span className="text-3xl">🚒</span>
                       <div>
-                        <p className="font-medium text-slate-700">{t.sections.contact.civilProtection}</p>
-                        <p className="text-lg font-bold text-slate-800">198</p>
+                        <p className="font-medium text-gray-700">{t.sections.contact.civilProtection}</p>
+                        <p className="text-lg font-bold text-gray-800">198</p>
                       </div>
                     </div>
-                    <Button size="sm" className="bg-slate-700 hover:bg-slate-800">
+                    <Button size="sm" className="bg-gray-800 hover:bg-gray-900">
                       <Phone className="h-4 w-4" />
                     </Button>
                   </div>
@@ -877,57 +877,57 @@ export default function Home() {
             </Card>
 
             {/* Administration Numbers */}
-            <Card className="shadow-lg border border-slate-200">
+            <Card className="shadow-lg border border-gray-200">
               <CardContent className="p-4 space-y-3">
-                <h3 className="font-bold text-blue-700 flex items-center gap-2">
+                <h3 className="font-bold text-gray-800 flex items-center gap-2">
                   <Phone className="h-5 w-5" />
                   {language === 'ar' ? 'أرقام إدارة شرطة المرور' : language === 'fr' ? 'Numéros de l\'Administration' : 'Traffic Police Administration'}
                 </h3>
                 
                 <div className="grid grid-cols-3 gap-3">
-                  <div className="text-center p-3 bg-slate-50 rounded-xl">
-                    <p className="text-xs text-slate-500 mb-1">{language === 'ar' ? 'الهاتف 1' : 'Tel 1'}</p>
-                    <p className="font-bold text-slate-800 text-lg" dir="ltr">71 343 201</p>
-                    <a href="tel:71343201" className="text-xs text-blue-600 hover:underline">{language === 'ar' ? 'اتصل' : 'Call'}</a>
+                  <div className="text-center p-3 bg-gray-50 rounded-xl">
+                    <p className="text-xs text-gray-500 mb-1">{language === 'ar' ? 'الهاتف 1' : 'Tel 1'}</p>
+                    <p className="font-bold text-gray-800 text-lg" dir="ltr">71 343 201</p>
+                    <a href="tel:71343201" className="text-xs text-red-600 hover:underline">{language === 'ar' ? 'اتصل' : 'Call'}</a>
                   </div>
-                  <div className="text-center p-3 bg-slate-50 rounded-xl">
-                    <p className="text-xs text-slate-500 mb-1">{language === 'ar' ? 'الهاتف 2' : 'Tel 2'}</p>
-                    <p className="font-bold text-slate-800 text-lg" dir="ltr">71 342 875</p>
-                    <a href="tel:71342875" className="text-xs text-blue-600 hover:underline">{language === 'ar' ? 'اتصل' : 'Call'}</a>
+                  <div className="text-center p-3 bg-gray-50 rounded-xl">
+                    <p className="text-xs text-gray-500 mb-1">{language === 'ar' ? 'الهاتف 2' : 'Tel 2'}</p>
+                    <p className="font-bold text-gray-800 text-lg" dir="ltr">71 342 875</p>
+                    <a href="tel:71342875" className="text-xs text-red-600 hover:underline">{language === 'ar' ? 'اتصل' : 'Call'}</a>
                   </div>
-                  <div className="text-center p-3 bg-slate-50 rounded-xl">
-                    <p className="text-xs text-slate-500 mb-1">{language === 'ar' ? 'الهاتف 3' : 'Tel 3'}</p>
-                    <p className="font-bold text-slate-800 text-lg" dir="ltr">71 342 787</p>
-                    <a href="tel:71342787" className="text-xs text-blue-600 hover:underline">{language === 'ar' ? 'اتصل' : 'Call'}</a>
+                  <div className="text-center p-3 bg-gray-50 rounded-xl">
+                    <p className="text-xs text-gray-500 mb-1">{language === 'ar' ? 'الهاتف 3' : 'Tel 3'}</p>
+                    <p className="font-bold text-gray-800 text-lg" dir="ltr">71 342 787</p>
+                    <a href="tel:71342787" className="text-xs text-red-600 hover:underline">{language === 'ar' ? 'اتصل' : 'Call'}</a>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between p-3 bg-purple-50 rounded-xl border border-purple-100">
+                <div className="flex items-center justify-between p-3 bg-gray-100 rounded-xl border border-gray-200">
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">📠</span>
                     <div>
-                      <p className="text-xs text-slate-500">{language === 'ar' ? 'الفاكس' : 'Fax'}</p>
-                      <p className="font-bold text-slate-800" dir="ltr">71 343 146</p>
+                      <p className="text-xs text-gray-500">{language === 'ar' ? 'الفاكس' : 'Fax'}</p>
+                      <p className="font-bold text-gray-800" dir="ltr">71 343 146</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-3 bg-green-50 rounded-xl border border-green-100">
+                <div className="p-3 bg-gray-100 rounded-xl border border-gray-200">
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">🕐</span>
                     <div>
-                      <p className="font-medium text-green-800">{language === 'ar' ? 'ساعات العمل' : language === 'fr' ? 'Heures d\'ouverture' : 'Working Hours'}</p>
-                      <p className="text-sm text-green-600">{language === 'ar' ? 'خدمة متواصلة 24/24 ساعة - 7 أيام' : language === 'fr' ? 'Service 24h/24 - 7 jours' : '24/7 Service'}</p>
+                      <p className="font-medium text-gray-800">{language === 'ar' ? 'ساعات العمل' : language === 'fr' ? 'Heures d\'ouverture' : 'Working Hours'}</p>
+                      <p className="text-sm text-gray-600">{language === 'ar' ? 'خدمة متواصلة 24/24 ساعة - 7 أيام' : language === 'fr' ? 'Service 24h/24 - 7 jours' : '24/7 Service'}</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
+                <div className="p-3 bg-gray-100 rounded-xl border border-gray-200">
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">📍</span>
                     <div>
-                      <p className="font-medium text-blue-800">{language === 'ar' ? 'العنوان' : language === 'fr' ? 'Adresse' : 'Address'}</p>
-                      <p className="text-sm text-blue-600">{language === 'ar' ? 'شارع الجمهورية 1001 تونس' : 'Rue de la République 1001 Tunis'}</p>
+                      <p className="font-medium text-gray-800">{language === 'ar' ? 'العنوان' : language === 'fr' ? 'Adresse' : 'Address'}</p>
+                      <p className="text-sm text-gray-600">{language === 'ar' ? 'شارع الجمهورية 1001 تونس' : 'Rue de la République 1001 Tunis'}</p>
                     </div>
                   </div>
                 </div>
@@ -935,10 +935,10 @@ export default function Home() {
             </Card>
 
             {/* Email */}
-            <Card className="shadow-lg border border-slate-200">
+            <Card className="shadow-lg border border-gray-200">
               <CardContent className="p-4">
-                <p className="text-xs text-slate-500 mb-1">📧 {language === 'ar' ? 'البريد الإلكتروني' : 'Email'}</p>
-                <a href="mailto:d.police.circulation.tun@gmail.com" className="font-bold text-slate-800 text-lg underline">
+                <p className="text-xs text-gray-500 mb-1">📧 {language === 'ar' ? 'البريد الإلكتروني' : 'Email'}</p>
+                <a href="mailto:d.police.circulation.tun@gmail.com" className="font-bold text-gray-800 text-lg underline">
                   d.police.circulation.tun@gmail.com
                 </a>
               </CardContent>
@@ -949,14 +949,14 @@ export default function Home() {
         {/* Services Section */}
         {activeTab === 'services' && (
           <div className="space-y-4">
-            <Card className="bg-slate-700 text-white border-0 shadow-lg">
+            <Card className="bg-gray-800 text-white border-0 shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-2xl font-bold mb-1">{t.sections.services.title}</h2>
-                    <p className="text-slate-300 text-sm">{t.sections.services.subtitle}</p>
+                    <p className="text-gray-300 text-sm">{t.sections.services.subtitle}</p>
                   </div>
-                  <div className="w-16 h-16 bg-slate-600 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center">
                     <Settings className="h-8 w-8" />
                   </div>
                 </div>
@@ -973,11 +973,11 @@ export default function Home() {
                 { icon: '💳', title: t.sections.services.eservices },
                 { icon: '❓', title: t.sections.services.faq },
               ].map((service, index) => (
-                <Card key={index} className="bg-slate-100 border border-slate-200 cursor-pointer hover:bg-slate-200 transition-colors">
+                <Card key={index} className="bg-gray-100 border border-gray-200 cursor-pointer hover:bg-gray-200 transition-colors">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-4">
                       <div className="text-2xl">{service.icon}</div>
-                      <span className="font-medium text-slate-700">{service.title}</span>
+                      <span className="font-medium text-gray-700">{service.title}</span>
                     </div>
                   </CardContent>
                 </Card>
@@ -988,19 +988,19 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-800 text-white mt-auto">
+      <footer className="bg-gray-900 text-white mt-auto">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-sm">
             <div className="flex items-center gap-2">
               <span className="font-bold">{t.appName}</span>
             </div>
-            <div className="text-slate-300">🇹🇳 {language === 'ar' ? 'الجمهورية التونسية' : 'République Tunisienne'}</div>
+            <div className="text-gray-400">🇹🇳 {language === 'ar' ? 'الجمهورية التونسية' : 'République Tunisienne'}</div>
           </div>
         </div>
       </footer>
 
       {/* Mobile Bottom Navigation */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-lg z-40">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700 shadow-lg z-40">
         <div className="grid grid-cols-4 gap-1 p-2">
           {tabs.map((tab) => (
             <button
@@ -1008,7 +1008,7 @@ export default function Home() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex flex-col items-center gap-1 px-2 py-2 rounded-lg text-xs ${
-                activeTab === tab.id ? 'bg-slate-100 text-slate-800' : 'text-slate-500'
+                activeTab === tab.id ? 'bg-gray-800 text-white' : 'text-gray-400'
               }`}
             >
               <tab.icon className="h-5 w-5" />
