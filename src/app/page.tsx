@@ -69,7 +69,7 @@ const translations = {
     sections: {
       safety: {
         title: 'السلامة المرورية',
-        subtitle: 'معلومات حديثة عن حالة الطرق',
+        subtitle: 'مستجدات الطرقات بكامل مرجع نظر الأمن الوطني',
         congestion: 'الإكتظاظ المروري',
         reports: 'البلاغات المرورية',
         roadworks: 'الأشغال بالطريق',
@@ -147,7 +147,7 @@ const translations = {
     sections: {
       safety: {
         title: 'Sécurité Routière',
-        subtitle: 'Informations sur l\'état des routes',
+        subtitle: 'Actualités routières dans toute la zone de compétence de la Sûreté Nationale',
         congestion: 'Encombrement',
         reports: 'Signalements',
         roadworks: 'Travaux',
@@ -225,7 +225,7 @@ const translations = {
     sections: {
       safety: {
         title: 'Road Safety',
-        subtitle: 'Latest road condition information',
+        subtitle: 'Road updates across the entire National Security jurisdiction',
         congestion: 'Traffic Congestion',
         reports: 'Reports',
         roadworks: 'Road Works',
