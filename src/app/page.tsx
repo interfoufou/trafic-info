@@ -451,9 +451,13 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-lg bg-red-700 flex items-center justify-center text-white font-bold text-lg">
-                🚗
-              </div>
+              <Image 
+                src="/logo.png" 
+                alt="إدارة شرطة المرور" 
+                width={48} 
+                height={48} 
+                className="w-12 h-12 rounded-lg object-contain"
+              />
               <div className="hidden sm:block">
                 <h1 className="text-lg md:text-xl font-bold text-white">{t.appName}</h1>
                 <p className="text-xs text-gray-400">{t.subtitle}</p>
@@ -931,17 +935,6 @@ export default function Home() {
                       <p className="text-sm text-gray-600">{language === 'ar' ? 'شارع الجمهورية 1001 تونس' : 'Rue de la République 1001 Tunis'}</p>
                     </div>
                   </div>
-                </div>
-
-                {/* شعار إدارة شرطة المرور */}
-                <div className="flex justify-center pt-2">
-                  <Image 
-                    src="/logo.png" 
-                    alt="إدارة شرطة المرور" 
-                    width={120} 
-                    height={120} 
-                    className="object-contain"
-                  />
                 </div>
               </CardContent>
             </Card>
