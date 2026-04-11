@@ -492,7 +492,7 @@ export default function Home() {
                 className="flex items-center gap-1.5 px-3 py-2 bg-red-700 text-white rounded-lg text-sm font-medium shadow-md hover:bg-red-800"
               >
                 <Download className="h-4 w-4" />
-                <span className="hidden sm:inline">{language === 'ar' ? 'تحميل المشروع' : language === 'fr' ? 'Télécharger' : 'Download'}</span>
+                <span className="hidden sm:inline">{language === 'ar' ? 'تحميل التطبيق' : language === 'fr' ? 'Télécharger l\'application' : 'Download App'}</span>
               </a>
               
               {/* Share Button */}
