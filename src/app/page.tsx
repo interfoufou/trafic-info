@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -967,7 +968,7 @@ export default function Home() {
               {[
                 { icon: '🚗', title: t.sections.services.license },
                 { icon: '🚧', title: t.sections.services.roadworkPermit },
-                { icon: '📷', title: t.sections.services.radar },
+                { icon: 'radar', title: t.sections.services.radar },
                 { icon: '⚠️', title: t.sections.services.violations },
                 { icon: '🛡️', title: t.sections.services.accidents },
                 { icon: '💳', title: t.sections.services.eservices },
@@ -976,7 +977,11 @@ export default function Home() {
                 <Card key={index} className="bg-gray-100 border border-gray-200 cursor-pointer hover:bg-gray-200 transition-colors">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-4">
-                      <div className="text-2xl">{service.icon}</div>
+                      {service.icon === 'radar' ? (
+                        <Image src="/icons/radar.svg" alt="Radar" width={32} height={32} className="w-8 h-8" />
+                      ) : (
+                        <div className="text-2xl">{service.icon}</div>
+                      )}
                       <span className="font-medium text-gray-700">{service.title}</span>
                     </div>
                   </CardContent>
