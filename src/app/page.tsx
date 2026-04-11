@@ -700,9 +700,13 @@ export default function Home() {
             <Card className="shadow-lg border-2 border-red-600 bg-red-50">
               <CardContent className="p-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-20 h-20 bg-red-700 rounded-xl flex items-center justify-center text-white text-4xl shadow-lg">
-                    💰
-                  </div>
+                  <Image 
+                    src="/icons/fines.png" 
+                    alt="الخطايا المالية" 
+                    width={80} 
+                    height={80} 
+                    className="w-20 h-20 object-contain"
+                  />
                   <div className="flex-1">
                     <h3 className="font-bold text-red-900 text-2xl">{t.sections.citizen.financialFines}</h3>
                     <p className="text-base text-red-700 mt-2">{t.sections.citizen.financialFinesDesc}</p>
