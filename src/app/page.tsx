@@ -716,7 +716,7 @@ export default function Home() {
                     className="bg-red-700 hover:bg-red-800 text-white shadow-lg px-8 py-3 text-lg"
                   >
                     <a href="https://amendes.finances.gov.tn/jsp/Amende/cons_amende.jsp" target="_blank" rel="noopener noreferrer">
-                      {language === 'ar' ? 'التحقق الآن' : language === 'fr' ? 'Vérifier' : 'Check Now'}
+                      {language === 'ar' ? 'الرابط' : language === 'fr' ? 'Lien' : 'Link'}
                     </a>
                   </Button>
                 </div>
