@@ -119,7 +119,7 @@ const translations = {
       },
       services: {
         title: 'خدمات إدارة شرطة المرور',
-        subtitle: 'جميع الخدمات في متناول يدك',
+        subtitle: 'مصالح و فرق شرطة المرور بين إيديك',
         license: 'رخصة السياقة',
         roadworkPermit: 'تراخيص الأشغال بالطريق',
         radar: 'الرادار الآلي',
@@ -197,7 +197,7 @@ const translations = {
       },
       services: {
         title: 'Services',
-        subtitle: 'Tous les services à votre disposition',
+        subtitle: 'Services et unités de police de circulation à votre portée',
         license: 'Permis de conduire',
         roadworkPermit: 'Autorisations de travaux',
         radar: 'Radar automatique',
@@ -275,7 +275,7 @@ const translations = {
       },
       services: {
         title: 'Traffic Police Services',
-        subtitle: 'All services at your fingertips',
+        subtitle: 'Traffic Police Services and Units at Your Fingertips',
         license: 'Driving License',
         roadworkPermit: 'Road Work Permits',
         radar: 'Speed Camera',
