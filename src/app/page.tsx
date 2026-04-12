@@ -53,8 +53,8 @@ import {
 // Translations
 const translations = {
   ar: {
-    appName: 'TRAFFIC INFO TUNISIE',
-    subtitle: 'إدارة شرطة المرور',
+    appName: 'الجمهورية التونسية',
+    subtitle: 'وزارة الداخلية - إدارة شرطة المرور',
     tabs: {
       safety: 'السلامة المرورية',
       citizen: 'فضاء المواطن',
@@ -131,8 +131,8 @@ const translations = {
     },
   },
   fr: {
-    appName: 'TRAFFIC INFO TUNISIE',
-    subtitle: 'Administration de Police de Circulation',
+    appName: 'République Tunisienne',
+    subtitle: 'Ministère de l\'Intérieur - Administration de Police de Circulation',
     tabs: {
       safety: 'Sécurité Routière',
       citizen: 'Espace Citoyen',
@@ -209,8 +209,8 @@ const translations = {
     },
   },
   en: {
-    appName: 'TRAFFIC INFO TUNISIE',
-    subtitle: 'Traffic Police Administration',
+    appName: 'Republic of Tunisia',
+    subtitle: 'Ministry of Interior - Traffic Police Administration',
     tabs: {
       safety: 'Road Safety',
       citizen: 'Citizen Space',
