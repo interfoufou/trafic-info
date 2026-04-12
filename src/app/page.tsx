@@ -319,7 +319,7 @@ const mockReports = [
     id: '2',
     type: 'roadwork',
     title: 'أشغال مدخل المحول الجنوبي للعاصمة',
-    description: 'أسغال إزالة قنطرة المروج',
+    description: 'أشغال إزالة قنطرة المروج',
     location: 'المحول الجنوبي - تونس',
     status: 'active',
     votes: 8,
