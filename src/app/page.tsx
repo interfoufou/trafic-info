@@ -81,7 +81,7 @@ const translations = {
       },
       citizen: {
         title: 'فضاء المواطن المسؤول',
-        subtitle: 'تحسين السلامة المرورية مسؤولية مشتركة',
+        subtitle: 'السلامة المرورية مسؤولية مشتركة',
         sendAlert: 'إرسال تنبيه',
         photos: 'صور',
         videos: 'فيديو',
@@ -159,7 +159,7 @@ const translations = {
       },
       citizen: {
         title: 'Espace Citoyen Responsable',
-        subtitle: 'L\'amélioration de la sécurité routière est une responsabilité partagée',
+        subtitle: 'La sécurité routière est une responsabilité partagée',
         sendAlert: 'Envoyer une alerte',
         photos: 'Photos',
         videos: 'Vidéos',
@@ -237,7 +237,7 @@ const translations = {
       },
       citizen: {
         title: 'Responsible Citizen Space',
-        subtitle: 'Improving road safety is a shared responsibility',
+        subtitle: 'Road safety is a shared responsibility',
         sendAlert: 'Send Alert',
         photos: 'Photos',
         videos: 'Videos',
