@@ -54,7 +54,8 @@ import {
 const translations = {
   ar: {
     appName: 'الجمهورية التونسية',
-    subtitle: 'وزارة الداخلية - إدارة شرطة المرور',
+    ministryName: 'وزارة الداخلية',
+    policeName: 'إدارة شرطة المرور',
     tabs: {
       safety: 'السلامة المرورية',
       citizen: 'فضاء المواطن',
@@ -132,7 +133,8 @@ const translations = {
   },
   fr: {
     appName: 'République Tunisienne',
-    subtitle: 'Ministère de l\'Intérieur - Administration de Police de Circulation',
+    ministryName: 'Ministère de l\'Intérieur',
+    policeName: 'Administration de Police de Circulation',
     tabs: {
       safety: 'Sécurité Routière',
       citizen: 'Espace Citoyen',
@@ -210,7 +212,8 @@ const translations = {
   },
   en: {
     appName: 'Republic of Tunisia',
-    subtitle: 'Ministry of Interior - Traffic Police Administration',
+    ministryName: 'Ministry of Interior',
+    policeName: 'Traffic Police Administration',
     tabs: {
       safety: 'Road Safety',
       citizen: 'Citizen Space',
@@ -459,8 +462,9 @@ export default function Home() {
                 className="w-12 h-12 rounded-lg object-contain"
               />
               <div className="hidden sm:block">
-                <h1 className="text-lg md:text-xl font-bold text-white">{t.appName}</h1>
-                <p className="text-xs text-gray-400">{t.subtitle}</p>
+                <p className="text-xs text-gray-400">{t.appName}</p>
+                <p className="text-xs text-gray-400">{t.ministryName}</p>
+                <h1 className="text-base md:text-lg font-black text-white">{t.policeName}</h1>
               </div>
             </div>
 
@@ -1005,7 +1009,7 @@ export default function Home() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-sm">
             <div className="flex items-center gap-2">
-              <span className="font-bold">{t.appName}</span>
+              <span className="font-bold">{t.policeName}</span>
             </div>
             <div className="text-gray-400">🇹🇳 {language === 'ar' ? 'الجمهورية التونسية' : 'République Tunisienne'}</div>
           </div>
